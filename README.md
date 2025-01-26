@@ -105,7 +105,7 @@ const sortPropertiesPlugin = require("eslint-plugin-sort-properties");
 
 module.exports = [
   // ...
-  ...sortPropertiesPlugin.configs.flatAll,
+  sortPropertiesPlugin.configs.flatAll,
 ];
 ```
 

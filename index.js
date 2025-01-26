@@ -17,14 +17,15 @@ module.exports = {
         "sort-properties/sort-interface": ["warn"],
       },
     },
-    flatAll: {
-      plugins: { "sort-properties": this },
-      rules: {
-        "sort-properties/sort-object-expression": ["warn"],
-        "sort-properties/sort-object-destructing": ["warn"],
-        "sort-properties/sort-type-literal": ["warn"],
-        "sort-properties/sort-interface": ["warn"],
-      },
-    },
+  },
+};
+
+module.exports.configs.flatAll = {
+  plugins: { "sort-properties": module.exports },
+  rules: {
+    "sort-properties/sort-object-expression": ["warn"],
+    "sort-properties/sort-object-destructing": ["warn"],
+    "sort-properties/sort-type-literal": ["warn"],
+    "sort-properties/sort-interface": ["warn"],
   },
 };

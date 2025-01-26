@@ -1,3 +1,6 @@
+const naturalCompare = require("natural-compare");
+const { getStaticPropertyName } = require("./ast-utils");
+
 /**
  *
  * @param {import('eslint').Rule.RuleContext} context
