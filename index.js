@@ -5,6 +5,17 @@ module.exports = {
     "sort-object-expression": require("./rules/sort-object-expression"),
     "sort-object-destructing": require("./rules/sort-object-destructing"),
     "sort-type-literal": require("./rules/sort-type-literal"),
-    "sort-interface": reqiuire("./rules/sort-interface"),
+    "sort-interface": require("./rules/sort-interface"),
+  },
+  configs: {
+    all: {
+      plugins: { "sort-properties": this },
+      rules: {
+        "sort-properties/sort-object-expression": ["warn"],
+        "sort-properties/sort-object-destructing": ["warn"],
+        "sort-properties/sort-type-literal": ["warn"],
+        "sort-properties/sort-interface": ["warn"],
+      },
+    },
   },
 };
