@@ -9,6 +9,15 @@ module.exports = {
   },
   configs: {
     all: {
+      plugins: ["sort-properties"],
+      rules: {
+        "sort-properties/sort-object-expression": ["warn"],
+        "sort-properties/sort-object-destructing": ["warn"],
+        "sort-properties/sort-type-literal": ["warn"],
+        "sort-properties/sort-interface": ["warn"],
+      },
+    },
+    flatAll: {
       plugins: { "sort-properties": this },
       rules: {
         "sort-properties/sort-object-expression": ["warn"],
