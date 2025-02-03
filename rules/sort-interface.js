@@ -19,8 +19,7 @@ module.exports = {
     type: "suggestion",
   },
   create(context) {
-    context.ts = true;
-    const check = createCheck({ context });
+    const check = createCheck({ context, ts: true });
     return {
       TSInterfaceBody(node) {
         check(node.body);

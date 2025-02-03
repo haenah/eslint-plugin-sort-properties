@@ -20,7 +20,7 @@ module.exports = {
   },
   create(context) {
     context.ts = true;
-    const check = createCheck({ context });
+    const check = createCheck({ context, ts: true });
     return {
       TSTypeLiteral(node) {
         // Exclude {[key: {Key}]: {Value}} pattern because this type of signature can exist only once.

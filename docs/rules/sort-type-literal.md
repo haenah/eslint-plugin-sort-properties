@@ -55,13 +55,13 @@ type Foo = {
   "sort-properties/sort-type-literal": [
     "error",
     {
-      "order": "desc",
+      "order": "asc",
       "caseSensitive": false,
       "natural": false,
       "allowLineSeparatedGroups": false,
       "ignoreComputedKeys": true,
       "minKeys": 3,
-      "functionPriority": "none"
+      "functionPriority": "higher"
     }
   ]
 }

@@ -61,7 +61,7 @@ interface Foo {
       "allowLineSeparatedGroups": false,
       "ignoreComputedKeys": true,
       "minKeys": 3,
-      "functionPriority": "none"
+      "functionOrder": "equal"
     }
   ]
 }

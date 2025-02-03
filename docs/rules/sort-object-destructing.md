@@ -48,7 +48,7 @@ const { a, b } = obj;
       "allowLineSeparatedGroups": false,
       "ignoreComputedKeys": true,
       "minKeys": 3,
-      "functionPriority": "none"
+      "functionPriority": "higher"
     }
   ]
 }

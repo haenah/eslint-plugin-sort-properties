@@ -8,7 +8,7 @@ const { getStaticPropertyName } = require("./ast-utils");
  * If true, the check will split the properties ignoring the current one.\
  * previousProperty is undefined if the current property is the first one or if the previous property was ignored.
  */
-function createCheck({ breakWhen, context, splitWhen }) {
+function createCheck({ breakWhen, context, splitWhen, ts }) {
   const {
     options: [
       {
@@ -23,7 +23,6 @@ function createCheck({ breakWhen, context, splitWhen }) {
         order = "asc",
       },
     ],
-    ts,
   } = context;
   const orderCoeff = order === "asc" ? 1 : -1;
   const funcCoeff =
@@ -36,7 +35,7 @@ function createCheck({ breakWhen, context, splitWhen }) {
       p.f =
         funcCoeff *
         (p.type === "TSMethodSignature" ||
-          p.typeAnnotation?.type === "TSFunctionType");
+          p.typeAnnotation?.typeAnnotation.type === "TSFunctionType");
     } else {
       p.f =
         funcCoeff *
@@ -63,7 +62,7 @@ function createCheck({ breakWhen, context, splitWhen }) {
     );
     if (outOfOrder) {
       context.report({
-        data: { name: outOfOrder.n },
+        data: { name: getStaticPropertyName(outOfOrder) },
         messageId: "outOfOrder",
         node: outOfOrder.key,
         fix(fixer) {
@@ -80,7 +79,9 @@ function createCheck({ breakWhen, context, splitWhen }) {
               range: [properties[i].range[1], p.range[0]],
             })
           );
-          const sortedProperties = properties.slice().sort(compareProperties);
+          const sortedProperties = properties
+            .slice()
+            .sort((a, b) => orderCoeff * compareProperties(a, b));
           const sortedText =
             sortedProperties[0].text +
             sortedProperties
