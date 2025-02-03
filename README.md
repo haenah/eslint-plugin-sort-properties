@@ -1,8 +1,17 @@
 # eslint-plugin-sort-properties
 
-This plugin provides rules that enforce the sorting of properties in object expressions, object destructuring, type literals, and interface members.\
-Inspired by [eslint-plugin-sort-keys-fix](https://www.npmjs.com/package/eslint-plugin-sort-keys-fix), it is designed to be auto-fixable but way faster.\
+- [eslint-plugin-sort-properties](#eslint-plugin-sort-properties)
+  - [Rules](#rules)
+  - [Installation](#installation)
+  - [Configuration (legacy: `.eslintrc*`)](#configuration-legacy-eslintrc)
+  - [Configuration (new: `eslint.config.js`)](#configuration-new-eslintconfigjs)
+  - [Configurations](#configurations)
+
+This plugin provides rules that enforce the sorting of properties in object expressions, object destructuring for JavaScript, and type literals, interface members for TypeScript.\
+Inspired by [eslint-plugin-sort-keys-fix](https://www.npmjs.com/package/eslint-plugin-sort-keys-fix), it is designed to be auto-fixable but way faster by fixing misorder of properties at once.\
 Additionally, inspired by the [eslint-plugin-react/jsx-sort-props rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md), it supports giving higher priority to function properties when sorting.
+
+## Rules
 
 <!-- begin auto-generated rules list -->
 
@@ -11,12 +20,12 @@ Additionally, inspired by the [eslint-plugin-react/jsx-sort-props rule](https://
 🔧 Automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--fix).\
 💡 Manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
 
-| Name                                                             | Description                                              | ⚠️  | 🔧  | 💡  |
-| :--------------------------------------------------------------- | :------------------------------------------------------- | :-- | :-- | :-- |
-| [sort-interface](docs/rules/sort-interface.md)                   | Enforce interface members to be sorted.                  | 🌐  | 🔧  | 💡  |
-| [sort-object-destructing](docs/rules/sort-object-destructing.md) | Enforce properties in object destructuring to be sorted. | 🌐  | 🔧  | 💡  |
-| [sort-object-expression](docs/rules/sort-object-expression.md)   | Enforce properties in object expressions to be sorted.   | 🌐  | 🔧  | 💡  |
-| [sort-type-literal](docs/rules/sort-type-literal.md)             | Enforce properties in type literals to be sorted.        | 🌐  | 🔧  | 💡  |
+| Name                                                             | Description                                              | ⚠️                    | 🔧 | 💡 |
+| :--------------------------------------------------------------- | :------------------------------------------------------- | :-------------------- | :- | :- |
+| [sort-interface](docs/rules/sort-interface.md)                   | Enforce interface members to be sorted.                  | 🌐 ![badge-flatAll][] | 🔧 | 💡 |
+| [sort-object-destructing](docs/rules/sort-object-destructing.md) | Enforce properties in object destructuring to be sorted. | 🌐 ![badge-flatAll][] | 🔧 | 💡 |
+| [sort-object-expression](docs/rules/sort-object-expression.md)   | Enforce properties in object expressions to be sorted.   | 🌐 ![badge-flatAll][] | 🔧 | 💡 |
+| [sort-type-literal](docs/rules/sort-type-literal.md)             | Enforce properties in type literals to be sorted.        | 🌐 ![badge-flatAll][] | 🔧 | 💡 |
 
 <!-- end auto-generated rules list -->
 
@@ -127,3 +136,14 @@ module.exports = [
   },
 ];
 ```
+
+## Configurations
+
+<!-- begin auto-generated configs list -->
+
+|    | Name      | Description                                                        |
+| :- | :-------- | :----------------------------------------------------------------- |
+| 🌐 | `all`     | Apply all rules in the `sort-properties` plugin. Used in eslint<=8 |
+|    | `flatAll` | Apply all rules in the `sort-properties` plugin. Used in eslint>=9 |
+
+<!-- end auto-generated configs list -->

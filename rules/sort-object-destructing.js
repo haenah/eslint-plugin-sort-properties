@@ -1,26 +1,39 @@
-const { checkOrderAndReport } = require("./utils/order");
+const baseMessage = require("./constants/base-message");
+const { baseSchema } = require("./constants/base-option");
+const { createCheck } = require("./utils/check");
+
+const schema = {
+  ...baseSchema,
+  default: { ...baseSchema.default },
+  properties: { ...baseSchema.properties },
+};
+delete schema.properties.functionOrder;
+delete schema.default.functionOrder;
 
 /** @type {import('eslint').Rule.RuleModule} */
 module.exports = {
   meta: {
+    defaultOptions: [schema.default],
     docs: {
       category: "Stylistic Issues",
       description: "Enforce properties in object destructuring to be sorted.",
       recommended: true,
+      url: "https://github.com/haenah/eslint-plugin-sort-properties/blob/HEAD/docs/rules/sort-object-destructing.md",
     },
     fixable: "code",
     hasSuggestions: true,
+    messages: baseMessage,
+    schema: [schema],
     type: "suggestion",
   },
   create(context) {
+    const check = createCheck({
+      context,
+      breakWhen: (p) => p.type === "RestElement",
+    });
     return {
       ObjectPattern(node) {
-        let properties = [];
-        for (const p of node.properties) {
-          if (p.type === "RestElement") break;
-          properties.push(p);
-        }
-        checkOrderAndReport(context, properties);
+        check(node.properties);
       },
     };
   },
