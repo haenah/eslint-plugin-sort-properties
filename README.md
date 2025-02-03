@@ -5,10 +5,10 @@
   - [Installation](#installation)
   - [Configuration (legacy: `.eslintrc*`)](#configuration-legacy-eslintrc)
   - [Configuration (new: `eslint.config.js`)](#configuration-new-eslintconfigjs)
-  - [Configurations](#configurations)
+  - [Available configurations](#available-configurations)
 
 This plugin provides rules that enforce the sorting of properties in object expressions, object destructuring for JavaScript, and type literals, interface members for TypeScript.\
-Inspired by [eslint-plugin-sort-keys-fix](https://www.npmjs.com/package/eslint-plugin-sort-keys-fix), it is designed to be auto-fixable but way faster by fixing misorder of properties at once.\
+Inspired by [eslint-plugin-sort-keys-fix](https://www.npmjs.com/package/eslint-plugin-sort-keys-fix), it is designed to be auto-fixable but way faster by fixing misorder of properties at once. Also this plugin can be configured to include leading/trailing comments as part of the property, so there's less chance of breaking the placement of comments.\
 Additionally, inspired by the [eslint-plugin-react/jsx-sort-props rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md), it supports giving higher priority to function properties when sorting.
 
 ## Rules
@@ -17,15 +17,16 @@ Additionally, inspired by the [eslint-plugin-react/jsx-sort-props rule](https://
 
 ⚠️ Configurations set to warn in.\
 🌐 Set in the `all` configuration.\
+🌏 Set in the `flatAll` configuration.\
 🔧 Automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--fix).\
 💡 Manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
 
-| Name                                                             | Description                                              | ⚠️                    | 🔧 | 💡 |
-| :--------------------------------------------------------------- | :------------------------------------------------------- | :-------------------- | :- | :- |
-| [sort-interface](docs/rules/sort-interface.md)                   | Enforce interface members to be sorted.                  | 🌐 ![badge-flatAll][] | 🔧 | 💡 |
-| [sort-object-destructing](docs/rules/sort-object-destructing.md) | Enforce properties in object destructuring to be sorted. | 🌐 ![badge-flatAll][] | 🔧 | 💡 |
-| [sort-object-expression](docs/rules/sort-object-expression.md)   | Enforce properties in object expressions to be sorted.   | 🌐 ![badge-flatAll][] | 🔧 | 💡 |
-| [sort-type-literal](docs/rules/sort-type-literal.md)             | Enforce properties in type literals to be sorted.        | 🌐 ![badge-flatAll][] | 🔧 | 💡 |
+| Name                                                             | Description                                              | ⚠️    | 🔧  | 💡  |
+| :--------------------------------------------------------------- | :------------------------------------------------------- | :---- | :-- | :-- |
+| [sort-interface](docs/rules/sort-interface.md)                   | Enforce interface members to be sorted.                  | 🌐 🌏 | 🔧  | 💡  |
+| [sort-object-destructing](docs/rules/sort-object-destructing.md) | Enforce properties in object destructuring to be sorted. | 🌐 🌏 | 🔧  | 💡  |
+| [sort-object-expression](docs/rules/sort-object-expression.md)   | Enforce properties in object expressions to be sorted.   | 🌐 🌏 | 🔧  | 💡  |
+| [sort-type-literal](docs/rules/sort-type-literal.md)             | Enforce properties in type literals to be sorted.        | 🌐 🌏 | 🔧  | 💡  |
 
 <!-- end auto-generated rules list -->
 
@@ -45,15 +46,15 @@ $ npm install eslint-plugin-sort-properties --save-dev
 
 ## Configuration (legacy: `.eslintrc*`)
 
-> ⚠️ Important note\
-> To use rules for typescript(`sort-interface`, `sort-type-literal`), you need to specify the parser as `@typescript-eslint/parser`.
+> **⚠️ Important note**\
+> To use rules for typescript(`sort-interface`, `sort-type-literal`), you must specify the parser as `@typescript-eslint/parser`.
 
 ```js
 module.exports = {
   // ...
   overrides: [
     {
-      files: ["*.{ts,tsx}"],
+      files: ["**/*.{ts,tsx}"],
       parser: "@typescript-eslint/parser",
     },
   ],
@@ -84,8 +85,8 @@ module.exports = {
 
 ## Configuration (new: `eslint.config.js`)
 
-> ⚠️ Important note\
-> To use rules for typescript(`sort-interface`, `sort-type-literal`), you need to specify the parser as `@typescript-eslint/parser`.
+> **⚠️ Important note**\
+> To use rules for typescript(`sort-interface`, `sort-type-literal`), you must specify the parser as `@typescript-eslint/parser`.
 
 ```js
 const tseslint = require("typescript-eslint");
@@ -96,10 +97,9 @@ module.exports = tseslint.config(
 );
 
 // Or manually specify the parser
-
 module.exports = [
   {
-    files: ["*.{ts,tsx}"],
+    files: ["**/*.{ts,tsx}"],
     languageOptions: {
       parser: tseslint.parser,
     },
@@ -137,13 +137,13 @@ module.exports = [
 ];
 ```
 
-## Configurations
+## Available configurations
 
 <!-- begin auto-generated configs list -->
 
-|    | Name      | Description                                                        |
-| :- | :-------- | :----------------------------------------------------------------- |
-| 🌐 | `all`     | Apply all rules in the `sort-properties` plugin. Used in eslint<=8 |
-|    | `flatAll` | Apply all rules in the `sort-properties` plugin. Used in eslint>=9 |
+|     | Name      | Description                                                        |
+| :-- | :-------- | :----------------------------------------------------------------- |
+| 🌐  | `all`     | Apply all rules in the `sort-properties` plugin. Used in eslint<=8 |
+| 🌏  | `flatAll` | Apply all rules in the `sort-properties` plugin. Used in eslint>=9 |
 
 <!-- end auto-generated configs list -->
