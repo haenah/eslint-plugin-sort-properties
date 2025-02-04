@@ -4,7 +4,7 @@ This plugin provides rules that enforce the sorting of properties in object expr
 Inspired by [eslint-plugin-sort-keys-fix](https://www.npmjs.com/package/eslint-plugin-sort-keys-fix), it is designed to be auto-fixable but way faster by fixing misorder of properties at once. Also this plugin can be configured to include leading/trailing comments as part of the property, so there's less chance of breaking the placement of comments.\
 Additionally, inspired by the [eslint-plugin-react/jsx-sort-props rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md), it supports giving higher priority to function properties when sorting.
 
-![Demo GIF](https://raw.githubusercontent.com/haenah/eslint-plugin-sort-properties/refs/tags/v1.1.4/images/demo.gif?raw=true)
+![Demo GIF](https://raw.githubusercontent.com/haenah/eslint-plugin-sort-properties/refs/tags/v1.1.5/images/demo.gif?raw=true)
 
 ## Table of Contents
 
