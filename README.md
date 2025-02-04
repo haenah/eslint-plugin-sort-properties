@@ -1,15 +1,20 @@
 # eslint-plugin-sort-properties
 
+This plugin provides rules that enforce the sorting of properties in object expressions, object destructuring for JavaScript, and type literals, interface members for TypeScript.\
+Inspired by [eslint-plugin-sort-keys-fix](https://www.npmjs.com/package/eslint-plugin-sort-keys-fix), it is designed to be auto-fixable but way faster by fixing misorder of properties at once. Also this plugin can be configured to include leading/trailing comments as part of the property, so there's less chance of breaking the placement of comments.\
+Additionally, inspired by the [eslint-plugin-react/jsx-sort-props rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md), it supports giving higher priority to function properties when sorting.
+
+![](docs/images/demo.gif)
+
+## Table of Contents
+
 - [eslint-plugin-sort-properties](#eslint-plugin-sort-properties)
+  - [Table of Contents](#table-of-contents)
   - [Rules](#rules)
   - [Installation](#installation)
   - [Configuration (legacy: `.eslintrc*`)](#configuration-legacy-eslintrc)
   - [Configuration (new: `eslint.config.js`)](#configuration-new-eslintconfigjs)
   - [Available configurations](#available-configurations)
-
-This plugin provides rules that enforce the sorting of properties in object expressions, object destructuring for JavaScript, and type literals, interface members for TypeScript.\
-Inspired by [eslint-plugin-sort-keys-fix](https://www.npmjs.com/package/eslint-plugin-sort-keys-fix), it is designed to be auto-fixable but way faster by fixing misorder of properties at once. Also this plugin can be configured to include leading/trailing comments as part of the property, so there's less chance of breaking the placement of comments.\
-Additionally, inspired by the [eslint-plugin-react/jsx-sort-props rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md), it supports giving higher priority to function properties when sorting.
 
 ## Rules
 
