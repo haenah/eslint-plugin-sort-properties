@@ -1,5 +1,5 @@
 /** @type {import('eslint-doc-generator').GenerateOptions} */
 module.exports = {
-  configEmoji: [["flatAll", "🌏"]],
+  configEmoji: [["flat/all", "🌏"]],
   ruleDocTitleFormat: "prefix-name",
 };

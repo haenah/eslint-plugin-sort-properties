@@ -28,7 +28,7 @@ if (process?.env?.DOCGEN) {
   };
 }
 
-module.exports.configs.flatAll = {
+module.exports.configs["flat/all"] = {
   plugins: { "sort-properties": module.exports },
   rules: {
     "sort-properties/sort-interface": ["warn"],
@@ -38,7 +38,7 @@ module.exports.configs.flatAll = {
   },
 };
 if (process?.env?.DOCGEN) {
-  module.exports.configs.flatAll.meta = {
+  module.exports.configs["flat/all"].meta = {
     docs: {
       description:
         "Apply all rules in the `sort-properties` plugin. Used in eslint>=9",

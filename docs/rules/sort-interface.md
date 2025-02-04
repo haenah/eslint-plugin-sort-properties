@@ -1,6 +1,6 @@
 # sort-properties/sort-interface
 
-⚠️ This rule _warns_ in the following configs: 🌐 `all`, 🌏 `flatAll`.
+⚠️ This rule _warns_ in the following configs: 🌐 `all`, 🌏 `flat/all`.
 
 🔧💡 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) and manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
 

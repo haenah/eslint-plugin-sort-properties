@@ -12,9 +12,9 @@ Additionally, inspired by the [eslint-plugin-react/jsx-sort-props rule](https://
   - [Table of Contents](#table-of-contents)
   - [Rules](#rules)
   - [Installation](#installation)
+  - [Available configurations](#available-configurations)
   - [Configuration (legacy: `.eslintrc*`)](#configuration-legacy-eslintrc)
   - [Configuration (new: `eslint.config.js`)](#configuration-new-eslintconfigjs)
-  - [Available configurations](#available-configurations)
 
 ## Rules
 
@@ -22,7 +22,7 @@ Additionally, inspired by the [eslint-plugin-react/jsx-sort-props rule](https://
 
 ⚠️ Configurations set to warn in.\
 🌐 Set in the `all` configuration.\
-🌏 Set in the `flatAll` configuration.\
+🌏 Set in the `flat/all` configuration.\
 🔧 Automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--fix).\
 💡 Manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
 
@@ -40,14 +40,25 @@ Additionally, inspired by the [eslint-plugin-react/jsx-sort-props rule](https://
 You'll first need to install [ESLint](http://eslint.org):
 
 ```bash
-$ npm install eslint --save-dev
+npm install eslint --save-dev
 ```
 
 Next, install `eslint-plugin-sort-properties`:
 
 ```bash
-$ npm install eslint-plugin-sort-properties --save-dev
+npm install eslint-plugin-sort-properties --save-dev
 ```
+
+## Available configurations
+
+<!-- begin auto-generated configs list -->
+
+|     | Name       | Description                                                        |
+| :-- | :--------- | :----------------------------------------------------------------- |
+| 🌐  | `all`      | Apply all rules in the `sort-properties` plugin. Used in eslint<=8 |
+| 🌏  | `flat/all` | Apply all rules in the `sort-properties` plugin. Used in eslint>=9 |
+
+<!-- end auto-generated configs list -->
 
 ## Configuration (legacy: `.eslintrc*`)
 
@@ -112,14 +123,14 @@ module.exports = [
 ];
 ```
 
-Use `flatAll` to enable all rules. Here's an example configuration in your `eslint.config.js`:
+Use `flat/all` to enable all rules. Here's an example configuration in your `eslint.config.js`:
 
 ```js
 const sortPropertiesPlugin = require("eslint-plugin-sort-properties");
 
 module.exports = [
   // ...
-  sortPropertiesPlugin.configs.flatAll,
+  sortPropertiesPlugin.configs["flat/all"],
 ];
 ```
 
@@ -141,14 +152,3 @@ module.exports = [
   },
 ];
 ```
-
-## Available configurations
-
-<!-- begin auto-generated configs list -->
-
-|     | Name      | Description                                                        |
-| :-- | :-------- | :----------------------------------------------------------------- |
-| 🌐  | `all`     | Apply all rules in the `sort-properties` plugin. Used in eslint<=8 |
-| 🌏  | `flatAll` | Apply all rules in the `sort-properties` plugin. Used in eslint>=9 |
-
-<!-- end auto-generated configs list -->

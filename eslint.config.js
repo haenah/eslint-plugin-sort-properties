@@ -13,5 +13,5 @@ module.exports = [
     },
   },
   eslintJs.configs.recommended,
-  sortPropertiesPlugin.configs.flatAll,
+  sortPropertiesPlugin.configs["flat/all"],
 ];
