@@ -1,3 +1,5 @@
+benchmark/
+docs/
 images/
 eslint.config.js
 .eslint-doc-generatorrc.js

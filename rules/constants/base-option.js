@@ -14,7 +14,7 @@ const baseSchema = {
     allowLineSeparatedGroups: {
       default: true,
       description:
-        "If true, properties are separated independently by line breaks.",
+        "If true, properties are separated independently by line breaks. Works same as [eslint sort-keys rule](https://eslint.org/docs/latest/rules/sort-keys#rule-details).",
       type: "boolean",
     },
     caseSensitive: {

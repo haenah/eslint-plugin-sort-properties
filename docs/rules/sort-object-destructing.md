@@ -24,14 +24,14 @@ const { a, b } = obj;
 
 <!-- begin auto-generated rule options list -->
 
-| Name                       | Description                                                                                                           | Type    | Choices               | Default   |
-| :------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :------ | :-------------------- | :-------- |
-| `allowLineSeparatedGroups` | If true, properties are separated independently by line breaks.                                                       | Boolean |                       | `true`    |
-| `caseSensitive`            | Whether the comparison is case sensitive.                                                                             | Boolean |                       | `true`    |
-| `includeComments`          | Position of comments to consider as part of the property.                                                             |         | `leading`, `trailing` | `leading` |
-| `minKeys`                  | Minimum number of keys to check order.                                                                                | Integer |                       | `2`       |
-| `natural`                  | Whether the comparison is using a natural order. See [natural-compare](https://www.npmjs.com/package/natural-compare) | Boolean |                       | `true`    |
-| `order`                    | The order of properties.                                                                                              | String  | `asc`, `desc`         | `asc`     |
+| Name                       | Description                                                                                                                                                         | Type    | Choices               | Default   |
+| :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------ | :-------------------- | :-------- |
+| `allowLineSeparatedGroups` | If true, properties are separated independently by line breaks. Works same as [eslint sort-keys rule](https://eslint.org/docs/latest/rules/sort-keys#rule-details). | Boolean |                       | `true`    |
+| `caseSensitive`            | Whether the comparison is case sensitive.                                                                                                                           | Boolean |                       | `true`    |
+| `includeComments`          | Position of comments to consider as part of the property.                                                                                                           |         | `leading`, `trailing` | `leading` |
+| `minKeys`                  | Minimum number of keys to check order.                                                                                                                              | Integer |                       | `2`       |
+| `natural`                  | Whether the comparison is using a natural order. See [natural-compare](https://www.npmjs.com/package/natural-compare)                                               | Boolean |                       | `true`    |
+| `order`                    | The order of properties.                                                                                                                                            | String  | `asc`, `desc`         | `asc`     |
 
 <!-- end auto-generated rule options list -->
 
