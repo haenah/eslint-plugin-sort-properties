@@ -10,7 +10,7 @@ module.exports = {
       category: "Stylistic Issues",
       description: "Enforce properties in type literals to be sorted.",
       recommended: true,
-      url: "https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.6/docs/rules/sort-type-literal.md",
+      url: "https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.7/docs/rules/sort-type-literal.md",
     },
     fixable: "code",
     hasSuggestions: true,

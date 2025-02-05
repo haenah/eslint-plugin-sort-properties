@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-sort-properties",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "ESLint rules for sorting properties of object expressions, object destructings, and type literals interfaces for TypeScript by their keys.",
   "main": "index.js",
   "scripts": {
