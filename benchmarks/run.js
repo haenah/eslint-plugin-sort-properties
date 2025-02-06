@@ -20,16 +20,20 @@ const benchmarks = [
   ],
 ];
 
-String.prototype.th = (align) =>
-  `<th ${align ? `style="text-align:${align}";` : ""}>${this}</th>`;
-String.prototype.td = (align, rowspan) =>
-  `<td ${[
+String.prototype.th = function (align) {
+  return `<th ${align ? `style="text-align:${align}";` : ""}>${this}</th>`;
+};
+String.prototype.td = function (align, rowspan) {
+  return `<td ${[
     align && `style="text-align:${align}";`,
     rowspan && `rowspan="${rowspan}"`,
   ]
     .filter(Boolean)
     .join(" ")}>${this}</td>`;
-String.prototype.tr = () => `<tr>${this}</tr>`;
+};
+String.prototype.tr = function () {
+  return `<tr>${this}</tr>`;
+};
 
 async function run() {
   const allRuleIds = Object.keys(rules);
@@ -55,7 +59,7 @@ async function run() {
             key.td("center"),
             ...allRuleIds.map((ruleId) => {
               const time = times[ruleId];
-              return time?.[key]?.toFixed(2)?.td("right") ?? "".td("center");
+              return time?.[key]?.toFixed(2)?.td("end") ?? "".td("center");
             }),
           ]
             .join("")
