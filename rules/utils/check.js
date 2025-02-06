@@ -61,7 +61,7 @@ function createCheck({ breakWhen, context, splitWhen, ts }) {
       hydrateProperty(p);
       return orderCoeff * compareProperties(properties[i], p) > 0;
     });
-    if (outOfOrderIdx > 0) {
+    if (outOfOrderIdx >= 0) {
       context.report({
         data: {
           name: getStaticPropertyName(propertiesWithoutFirst[outOfOrderIdx]),
