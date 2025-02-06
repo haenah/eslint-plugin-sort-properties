@@ -55,17 +55,22 @@ function createCheck({ breakWhen, context, splitWhen, ts }) {
   }
   function checkSlice(properties) {
     if (properties.length <= 1) return;
-    properties.forEach(hydrateProperty);
+    hydrateProperty(properties[0]);
     const propertiesWithoutFirst = properties.slice(1);
-    const outOfOrder = propertiesWithoutFirst.find(
-      (p, i) => orderCoeff * compareProperties(properties[i], p) > 0
-    );
-    if (outOfOrder) {
+    const outOfOrderIdx = propertiesWithoutFirst.findIndex((p, i) => {
+      hydrateProperty(p);
+      return orderCoeff * compareProperties(properties[i], p) > 0;
+    });
+    if (outOfOrderIdx > 0) {
       context.report({
-        data: { name: getStaticPropertyName(outOfOrder) },
+        data: {
+          name: getStaticPropertyName(propertiesWithoutFirst[outOfOrderIdx]),
+        },
         messageId: "outOfOrder",
-        node: outOfOrder.key,
+        node: propertiesWithoutFirst[outOfOrderIdx].key,
         fix(fixer) {
+          // hydrate rest of the properties
+          propertiesWithoutFirst.slice(outOfOrderIdx).forEach(hydrateProperty);
           properties.forEach((p) => (p.text = context.sourceCode.getText(p)));
           if (ts) {
             const last = properties[properties.length - 1];

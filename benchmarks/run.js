@@ -10,46 +10,22 @@ const rules = {
 };
 
 const benchmarks = [
-  [
-    {
-      title: "Object expression:<br/>1 depth object with 10000 keys each",
-      create(iterations) {
-        return Array.from(
-          { length: iterations },
-          (_, i) =>
-            `const obj${i} = ${JSON.stringify(createShuffledObject(10000, 1))};`
-        ).join("\n");
-      },
+  [10000, 1],
+  [100, 2],
+  [10, 4],
+].map(([keys, depth]) => [
+  {
+    title: `Object expression:<br/>${depth} depth object with ${keys} keys each`,
+    create(repitition) {
+      return Array.from(
+        { length: repitition },
+        (_, i) =>
+          `const obj${i} = ${JSON.stringify(createShuffledObject(keys, depth))};`
+      ).join("\n");
     },
-    ["sort-object-expression", "sort-keys-fix/sort-keys-fix"],
-  ],
-  [
-    {
-      title: "Object expression:<br/>2 depth object with 100 keys each",
-      create(iterations) {
-        return Array.from(
-          { length: iterations },
-          (_, i) =>
-            `const obj${i} = ${JSON.stringify(createShuffledObject(100, 2))};`
-        ).join("\n");
-      },
-    },
-    ["sort-object-expression", "sort-keys-fix/sort-keys-fix"],
-  ],
-  [
-    {
-      title: "Object expression:<br/>4 depth object with 10 keys each",
-      create(iterations) {
-        return Array.from(
-          { length: iterations },
-          (_, i) =>
-            `const obj${i} = ${JSON.stringify(createShuffledObject(10, 4))};`
-        ).join("\n");
-      },
-    },
-    ["sort-object-expression", "sort-keys-fix/sort-keys-fix"],
-  ],
-];
+  },
+  ["sort-object-expression", "sort-keys-fix/sort-keys-fix"],
+]);
 
 String.prototype.th = function (align) {
   return `<th ${align ? `style="text-align:${align};"` : ""}>${this}</th>`;
@@ -74,16 +50,31 @@ async function run() {
     .tr();
 
   const iterations = 5;
+  const repititions = 3;
   const rows = await Promise.all(
     benchmarks.map(async ([benchmark, ruleIds]) => {
       const times = {};
       await Promise.all(
         ruleIds.map(async (ruleId) => {
           const rule = rules[ruleId];
-          times[ruleId] = await getTimesToFix(
-            rule,
-            benchmark.create(iterations)
+          const results = await Promise.all(
+            Array.from({ length: iterations }, () =>
+              getTimesToFix(rule, benchmark.create(repititions))
+            )
           );
+          times[ruleId] = {
+            fix:
+              results.reduce((acc, result) => acc + result.fix, 0) / iterations,
+            parse:
+              results.reduce((acc, result) => acc + result.parse, 0) /
+              iterations,
+            rule:
+              results.reduce((acc, result) => acc + result.rule, 0) /
+              iterations,
+            total:
+              results.reduce((acc, result) => acc + result.total, 0) /
+              iterations,
+          };
         })
       );
       return ["fix", "parse", "rule", "total"]
@@ -113,6 +104,7 @@ async function run() {
       ["Platform", os.platform()],
       ["CPU", os.cpus()[0].model],
       ["OS", `${os.type()} ${os.release()}`],
+      ["\\# of iterations", iterations],
     ]
       .map(([label, value]) => `- ${label}: ${value}`)
       .join("\n")
