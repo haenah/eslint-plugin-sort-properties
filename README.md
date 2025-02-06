@@ -1,11 +1,11 @@
 # eslint-plugin-sort-properties
 
 This plugin provides rules that enforce the sorting of properties in object expressions, object destructuring for JavaScript, and type literals, interface members for TypeScript.\
-Inspired by [eslint-plugin-sort-keys-fix](https://www.npmjs.com/package/eslint-plugin-sort-keys-fix), it is designed to be auto-fixable but way faster by fixing misorder of properties at once. It is about **15x faster to fix, 5x to apply rule, 2x to parse and 3x in total.**<sub>[benchmark code](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.7/benchmarks/object-expression.js)</sub>\
+Inspired by [eslint-plugin-sort-keys-fix](https://www.npmjs.com/package/eslint-plugin-sort-keys-fix), it is designed to be auto-fixable but way faster by fixing misorder of properties at once. It is up to **5.5x faster to fix, 4.5x to apply rule, 2x to parse.**<sub>[benchmark](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.8/benchmarks/result.md)</sub>\
 And this plugin can be configured to include leading/trailing comments as part of the property, so there's less chance of breaking the placement of comments.\
 Additionally, inspired by the [eslint-plugin-react/jsx-sort-props rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md), it supports giving higher priority to function properties when sorting.
 
-![Demo GIF](https://raw.githubusercontent.com/haenah/eslint-plugin-sort-properties/refs/tags/v1.1.7/images/demo.gif?raw=true)
+![Demo GIF](https://raw.githubusercontent.com/haenah/eslint-plugin-sort-properties/refs/tags/v1.1.8/images/demo.gif?raw=true)
 
 ## Table of Contents
 
@@ -28,10 +28,10 @@ Additionally, inspired by the [eslint-plugin-react/jsx-sort-props rule](https://
 
 | Name                                                                                                                                 | Description                                              | ⚠️    | 🔧  | 💡  |
 | :----------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------- | :---- | :-- | :-- |
-| [sort-interface](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.7/docs/rules/sort-interface.md)                   | Enforce interface members to be sorted.                  | 🌐 🌏 | 🔧  | 💡  |
-| [sort-object-destructing](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.7/docs/rules/sort-object-destructing.md) | Enforce properties in object destructuring to be sorted. | 🌐 🌏 | 🔧  | 💡  |
-| [sort-object-expression](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.7/docs/rules/sort-object-expression.md)   | Enforce properties in object expressions to be sorted.   | 🌐 🌏 | 🔧  | 💡  |
-| [sort-type-literal](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.7/docs/rules/sort-type-literal.md)             | Enforce properties in type literals to be sorted.        | 🌐 🌏 | 🔧  | 💡  |
+| [sort-interface](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.8/docs/rules/sort-interface.md)                   | Enforce interface members to be sorted.                  | 🌐 🌏 | 🔧  | 💡  |
+| [sort-object-destructing](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.8/docs/rules/sort-object-destructing.md) | Enforce properties in object destructuring to be sorted. | 🌐 🌏 | 🔧  | 💡  |
+| [sort-object-expression](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.8/docs/rules/sort-object-expression.md)   | Enforce properties in object expressions to be sorted.   | 🌐 🌏 | 🔧  | 💡  |
+| [sort-type-literal](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.8/docs/rules/sort-type-literal.md)             | Enforce properties in type literals to be sorted.        | 🌐 🌏 | 🔧  | 💡  |
 
 <!-- end auto-generated rules list -->
 
