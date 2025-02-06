@@ -1,5 +1,5 @@
 const os = require("os");
-const { getTimesToFix } = require("./utils");
+const { createShuffledObject, getTimesToFix } = require("./utils");
 
 const rules = {
   "sort-object-expression": require("../rules/sort-object-expression"),
@@ -11,17 +11,48 @@ const rules = {
 
 const benchmarks = [
   [
-    require("./object-expression-2d1000k"),
+    {
+      title: "Object expression:<br/>1 depth object with 10000 keys each",
+      create(iterations) {
+        return Array.from(
+          { length: iterations },
+          (_, i) =>
+            `const obj${i} = ${JSON.stringify(createShuffledObject(10000, 1))};`
+        ).join("\n");
+      },
+    },
     ["sort-object-expression", "sort-keys-fix/sort-keys-fix"],
   ],
   [
-    require("./object-expression-4d10k"),
+    {
+      title: "Object expression:<br/>2 depth object with 100 keys each",
+      create(iterations) {
+        return Array.from(
+          { length: iterations },
+          (_, i) =>
+            `const obj${i} = ${JSON.stringify(createShuffledObject(100, 2))};`
+        ).join("\n");
+      },
+    },
+    ["sort-object-expression", "sort-keys-fix/sort-keys-fix"],
+  ],
+  [
+    {
+      title: "Object expression:<br/>4 depth object with 10 keys each",
+      create(iterations) {
+        return Array.from(
+          { length: iterations },
+          (_, i) =>
+            `const obj${i} = ${JSON.stringify(createShuffledObject(10, 4))};`
+        ).join("\n");
+      },
+    },
     ["sort-object-expression", "sort-keys-fix/sort-keys-fix"],
   ],
 ];
 
 String.prototype.th = function (align) {
-  return `<th ${align ? `style="text-align:${align}";` : ""}>${this}</th>`;
+  return `<th ${align ? `style="text-align:${align};"` : ""}>${this}</th>`;
 };
 String.prototype.td = function (align, rowspan) {
   return `<td ${[
@@ -42,20 +73,23 @@ async function run() {
     .join("")
     .tr();
 
+  const iterations = 5;
   const rows = await Promise.all(
     benchmarks.map(async ([benchmark, ruleIds]) => {
-      const code = benchmark.create();
       const times = {};
       await Promise.all(
         ruleIds.map(async (ruleId) => {
           const rule = rules[ruleId];
-          times[ruleId] = await getTimesToFix(rule, code);
+          times[ruleId] = await getTimesToFix(
+            rule,
+            benchmark.create(iterations)
+          );
         })
       );
-      return ["fix", "parse", "rule"]
-        .map((key, i) => {
+      return ["fix", "parse", "rule", "total"]
+        .map((key, i, arr) => {
           return [
-            !i ? benchmark.title.td(null, 3) : "",
+            !i ? benchmark.title.td(null, arr.length) : "",
             key.td("center"),
             ...allRuleIds.map((ruleId) => {
               const time = times[ruleId];

@@ -18,7 +18,7 @@ module.exports = {
       category: "Stylistic Issues",
       description: "Enforce properties in object destructuring to be sorted.",
       recommended: true,
-      url: "https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.8/docs/rules/sort-object-destructing.md",
+      url: "https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.9/docs/rules/sort-object-destructing.md",
     },
     fixable: "code",
     hasSuggestions: true,
