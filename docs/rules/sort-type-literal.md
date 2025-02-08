@@ -1,6 +1,6 @@
 # sort-properties/sort-type-literal
 
-⚠️ This rule _warns_ in the following configs: 🌐 `all`, 🌏 `flat/all`.
+⚠️ This rule _warns_ in the following configs: 🌐 `all`, ![TypeScript](https://img.shields.io/badge/-TS-007ACC?style=flat-square) `ts`.
 
 🔧💡 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) and manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
 

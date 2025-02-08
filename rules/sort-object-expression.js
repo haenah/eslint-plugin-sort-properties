@@ -10,7 +10,7 @@ module.exports = {
       category: "Stylistic Issues",
       description: "Enforce properties in object expressions to be sorted.",
       recommended: true,
-      url: "https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.10/docs/rules/sort-object-expression.md",
+      url: "https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.11/docs/rules/sort-object-expression.md",
     },
     fixable: "code",
     hasSuggestions: true,

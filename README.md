@@ -1,11 +1,11 @@
 # eslint-plugin-sort-properties
 
 This plugin provides rules that enforce the sorting of properties in object expressions, object destructuring for JavaScript, and type literals, interface members for TypeScript.\
-Inspired by [eslint-plugin-sort-keys-fix](https://www.npmjs.com/package/eslint-plugin-sort-keys-fix), it is designed to be auto-fixable but way faster by fixing misorder of properties at once. It is up to <span style="color:red;">**60x faster to fix, 8x to parse, 4x to apply rule.**</span><sub>[benchmark](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.10/benchmarks/result.md)</sub>\
+Inspired by [eslint-plugin-sort-keys-fix](https://www.npmjs.com/package/eslint-plugin-sort-keys-fix), it is designed to be auto-fixable but way faster by fixing misorder of properties at once. It is up to <span style="color:red;">**60x faster to fix, 8x to parse, 4x to apply rule.**</span><sub>[benchmark](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.11/benchmarks/result.md)</sub>\
 And this plugin can be configured to include leading/trailing comments as part of the property, so there's less chance of breaking the placement of comments.\
 Additionally, inspired by the [eslint-plugin-react/jsx-sort-props rule](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md), it supports giving higher priority to function properties when sorting.
 
-![Demo GIF](https://raw.githubusercontent.com/haenah/eslint-plugin-sort-properties/refs/tags/v1.1.10/images/demo.gif?raw=true)
+![Demo GIF](https://raw.githubusercontent.com/haenah/eslint-plugin-sort-properties/refs/tags/v1.1.11/images/demo.gif?raw=true)
 
 ## Table of Contents
 
@@ -22,16 +22,17 @@ Additionally, inspired by the [eslint-plugin-react/jsx-sort-props rule](https://
 
 ⚠️ Configurations set to warn in.\
 🌐 Set in the `all` configuration.\
-🌏 Set in the `flat/all` configuration.\
+![JavaScript](https://img.shields.io/badge/-JS-F7DF1E?style=flat-square) Set in the `js` configuration.\
+![TypeScript](https://img.shields.io/badge/-TS-007ACC?style=flat-square) Set in the `ts` configuration.\
 🔧 Automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--fix).\
 💡 Manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
 
-| Name                                                                                                                                  | Description                                              | ⚠️    | 🔧  | 💡  |
-| :------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------- | :---- | :-- | :-- |
-| [sort-interface](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.10/docs/rules/sort-interface.md)                   | Enforce interface members to be sorted.                  | 🌐 🌏 | 🔧  | 💡  |
-| [sort-object-destructing](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.10/docs/rules/sort-object-destructing.md) | Enforce properties in object destructuring to be sorted. | 🌐 🌏 | 🔧  | 💡  |
-| [sort-object-expression](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.10/docs/rules/sort-object-expression.md)   | Enforce properties in object expressions to be sorted.   | 🌐 🌏 | 🔧  | 💡  |
-| [sort-type-literal](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.10/docs/rules/sort-type-literal.md)             | Enforce properties in type literals to be sorted.        | 🌐 🌏 | 🔧  | 💡  |
+| Name                                                                                                                                  | Description                                              | ⚠️                                                                          | 🔧 | 💡 |
+| :------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------- | :-------------------------------------------------------------------------- | :- | :- |
+| [sort-interface](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.11/docs/rules/sort-interface.md)                   | Enforce interface members to be sorted.                  | 🌐 ![TypeScript](https://img.shields.io/badge/-TS-007ACC?style=flat-square) | 🔧 | 💡 |
+| [sort-object-destructing](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.11/docs/rules/sort-object-destructing.md) | Enforce properties in object destructuring to be sorted. | 🌐 ![JavaScript](https://img.shields.io/badge/-JS-F7DF1E?style=flat-square) | 🔧 | 💡 |
+| [sort-object-expression](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.11/docs/rules/sort-object-expression.md)   | Enforce properties in object expressions to be sorted.   | 🌐 ![JavaScript](https://img.shields.io/badge/-JS-F7DF1E?style=flat-square) | 🔧 | 💡 |
+| [sort-type-literal](https://github.com/haenah/eslint-plugin-sort-properties/blob/v1.1.11/docs/rules/sort-type-literal.md)             | Enforce properties in type literals to be sorted.        | 🌐 ![TypeScript](https://img.shields.io/badge/-TS-007ACC?style=flat-square) | 🔧 | 💡 |
 
 <!-- end auto-generated rules list -->
 
@@ -53,10 +54,11 @@ npm install eslint-plugin-sort-properties --save-dev
 
 <!-- begin auto-generated configs list -->
 
-|     | Name       | Description                                                        |
-| :-- | :--------- | :----------------------------------------------------------------- |
-| 🌐  | `all`      | Apply all rules in the `sort-properties` plugin. Used in eslint<=8 |
-| 🌏  | `flat/all` | Apply all rules in the `sort-properties` plugin. Used in eslint>=9 |
+|                                                                          | Name  | Description                                                                        |
+| :----------------------------------------------------------------------- | :---- | :--------------------------------------------------------------------------------- |
+| 🌐                                                                       | `all` | Apply all rules in the `sort-properties` plugin. Use `flat/all` in eslint>=9       |
+| ![JavaScript](https://img.shields.io/badge/-JS-F7DF1E?style=flat-square) | `js`  | Apply JavaScript rules in the `sort-properties` plugin. Use `flat/js` in eslint>=9 |
+| ![TypeScript](https://img.shields.io/badge/-TS-007ACC?style=flat-square) | `ts`  | Apply TypeScript rules in the `sort-properties` plugin. Use `flat/ts` in eslint>=9 |
 
 <!-- end auto-generated configs list -->
 
