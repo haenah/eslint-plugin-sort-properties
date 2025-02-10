@@ -40,15 +40,32 @@ function shuffleArray(array) {
   }
   return array;
 }
-function createShuffledObject(length, depth) {
-  return Object.fromEntries(
-    shuffleArray(
-      Array.from({ length }, (_, i) => [
-        `key${i}`,
-        depth > 1 ? createShuffledObject(length, depth - 1) : "value",
-      ])
+function createShuffledObjectExpression(length, depth) {
+  if (!depth) return "value";
+  return `{${shuffleArray(
+    Array.from(
+      { length },
+      (_, i) => `key${i}: ${createShuffledObjectExpression(length, depth - 1)}`
     )
-  );
+  ).join(",")}}`;
+}
+function createShuffledObjectDestructing(length, depth, prefix = "value") {
+  if (!depth) return prefix;
+  return `{${shuffleArray(
+    Array.from(
+      { length },
+      (_, i) =>
+        `key${i}: ${createShuffledObjectDestructing(
+          length,
+          depth - 1,
+          `${prefix}_${i}`
+        )}`
+    )
+  ).join(",")}}`;
 }
 
-module.exports = { createShuffledObject, getTimesToFix };
+module.exports = {
+  createShuffledObjectDestructing,
+  createShuffledObjectExpression,
+  getTimesToFix,
+};
