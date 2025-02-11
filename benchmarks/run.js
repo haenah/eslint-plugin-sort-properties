@@ -73,7 +73,7 @@ async function run() {
     .join("")
     .tr();
 
-  const iterations = 10;
+  const iterations = 20;
   const rows = await Promise.all(
     benchmarks.map(async ([title, create, ruleIds]) => {
       const times = {};
