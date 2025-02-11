@@ -12,7 +12,7 @@ function createCheck({ breakWhen, context, splitWhen, ts }) {
   const {
     options: [
       {
-        allowLineSeperatedGroups = true,
+        allowLineSeparatedGroups = true,
         includeComments = "leading",
         minKeys = 2,
 
@@ -139,7 +139,7 @@ function createCheck({ breakWhen, context, splitWhen, ts }) {
         continue;
       }
       if (
-        allowLineSeperatedGroups &&
+        allowLineSeparatedGroups &&
         prev &&
         prev.loc.end.line < p.loc.start.line - 1
       ) {
