@@ -28,25 +28,28 @@ function createCheck({ breakWhen, context, splitWhen, ts }) {
   const funcCoeff =
     functionOrder === "higher" ? 1 : functionOrder === "lower" ? -1 : 0;
 
+  const getPropertyName = caseSensitive
+    ? (name) => getStaticPropertyName(name) ?? "\0"
+    : (name) => getStaticPropertyName(name)?.toLowerCase() ?? "\0";
+
   /** Hydrate properties with caching flags and name for saving time in comparison. */
-  function hydrateProperty(p) {
-    if (ts) {
-      p.i = p.type === "TSIndexSignature" ? 1 : 0;
-      p.f =
-        funcCoeff *
-        (p.type === "TSMethodSignature" ||
-          p.typeAnnotation?.typeAnnotation.type === "TSFunctionType");
-    } else {
-      p.f =
-        funcCoeff *
-        (p.value?.type === "FunctionExpression" ||
-          p.value?.type === "ArrowFunctionExpression");
-    }
-    p.n = getStaticPropertyName(p) ?? "\0";
-    if (caseSensitive) {
-      p.n = p.n.toLowerCase();
-    }
-  }
+  const hydrateProperty = ts
+    ? function hydrateTsProperty(p) {
+        p.i = p.type === "TSIndexSignature" ? 1 : 0;
+        p.f =
+          funcCoeff *
+          (p.type === "TSMethodSignature" ||
+            p.typeAnnotation?.typeAnnotation.type === "TSFunctionType");
+        p.n = getPropertyName(p);
+      }
+    : function hydrateJsProperty(p) {
+        p.f =
+          funcCoeff *
+          (p.value?.type === "FunctionExpression" ||
+            p.value?.type === "ArrowFunctionExpression");
+        p.n = getPropertyName(p);
+      };
+
   function hydrateComment(p) {
     if (includeComments.startsWith("l")) {
       // Include leading comments
