@@ -47,6 +47,25 @@ function createCheck({ breakWhen, context, splitWhen, ts }) {
       p.n = p.n.toLowerCase();
     }
   }
+  function hydrateComment(p) {
+    if (includeComments.startsWith("l")) {
+      // Include leading comments
+      const comments = context.sourceCode.getCommentsBefore(p);
+      if (comments.length) {
+        const comment = comments[0];
+        p.range[0] = comment.range[0];
+        p.loc.start = comment.loc.start;
+      }
+    } else if (includeComments.startsWith("t")) {
+      // Include trailing comments
+      const comments = context.sourceCode.getCommentsAfter(p);
+      if (comments.length) {
+        const comment = comments[comments.length - 1];
+        p.range[1] = comment.range[1];
+        p.loc.end = comment.loc;
+      }
+    }
+  }
   function compareProperties(a, b) {
     if (a.i !== b.i) return a.i - b.i;
     if (a.f !== b.f) return a.f - b.f;
@@ -106,27 +125,10 @@ function createCheck({ breakWhen, context, splitWhen, ts }) {
   }
   return function check(properties) {
     if (properties.length < minKeys) return;
-    properties.forEach((p) => {
-      // include comments in the range
-      if (includeComments.startsWith("l")) {
-        const commentsBefore = context.sourceCode.getCommentsBefore(p);
-        if (commentsBefore.length) {
-          p.range[0] = commentsBefore[0].range[0];
-          p.loc.start = commentsBefore[0].loc.start;
-        }
-      } else if (includeComments.startsWith("f")) {
-        const comments = context.sourceCode.getCommentsAfter(p);
-        if (comments.length) {
-          p.range[1] = comments[comments.length - 1].range[1];
-          p.loc.end = comments[comments.length - 1].loc.end;
-        }
-      }
-    });
     let slice = [];
     for (const p of properties) {
-      if (breakWhen?.(p)) {
-        break;
-      }
+      hydrateComment(p);
+      if (breakWhen?.(p)) break;
       const prev = slice[slice.length - 1];
       if (splitWhen?.(p, prev)) {
         checkSlice(slice);
